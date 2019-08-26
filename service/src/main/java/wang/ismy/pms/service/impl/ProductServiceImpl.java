@@ -13,6 +13,7 @@ import java.util.List;
  * @date 2019/8/26 13:52
  */
 @Service
+@Transactional(rollbackFor = Exception.class)
 public class ProductServiceImpl implements ProductService {
 
     private ProductDao productDao;
@@ -24,5 +25,10 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> findAll() {
         return productDao.findAll();
+    }
+
+    @Override
+    public void save(Product product) {
+        productDao.save(product);
     }
 }

@@ -17,9 +17,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 
-
-
-    <title>数据 - AdminLTE2定制版</title>
+    <title>产品列表</title>
     <meta name="description" content="AdminLTE2定制版">
     <meta name="keywords" content="AdminLTE2定制版">
 
@@ -158,10 +156,10 @@
 <div class="wrapper">
 
     <!-- 页面头部 -->
-<%--    <jsp:include page="header.jsp"></jsp:include>--%>
-<%--    <!-- 页面头部 /-->--%>
-<%--    <!-- 导航侧栏 -->--%>
-<%--    <jsp:include page="aside.jsp"></jsp:include>--%>
+    <jsp:include page="header.jsp"></jsp:include>
+    <!-- 页面头部 /-->
+    <!-- 导航侧栏 -->
+    <jsp:include page="aside.jsp"></jsp:include>
     <!-- 导航侧栏 /-->
 
     <!-- 内容区域 -->

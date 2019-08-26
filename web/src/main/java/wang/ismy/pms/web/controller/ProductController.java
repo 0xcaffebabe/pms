@@ -31,4 +31,11 @@ public class ProductController {
         modelAndView.addObject("productList",all);
         return modelAndView;
     }
+
+    @RequestMapping("/save")
+    public String save(Product product){
+
+        productService.save(product);
+        return "redirect:/product/list";
+    }
 }

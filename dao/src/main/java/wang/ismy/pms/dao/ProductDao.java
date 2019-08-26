@@ -1,5 +1,6 @@
 package wang.ismy.pms.dao;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import wang.ismy.pms.domain.Product;
 
@@ -13,4 +14,9 @@ public interface ProductDao {
 
     @Select("SELECT * FROM product")
     List<Product> findAll();
+
+    @Insert("INSERT INTO product(" +
+            "productNum,productName,cityName,departureTime,productPrice,productDesc,productStatus) " +
+            "values(#{productNum},#{productName},#{cityName},#{departureTime},#{productPrice},# {productDesc},#{productStatus})")
+    void save(Product product);
 }
