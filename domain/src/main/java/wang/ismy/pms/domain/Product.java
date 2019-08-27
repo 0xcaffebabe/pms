@@ -1,9 +1,11 @@
 package wang.ismy.pms.domain;
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * @author MY
@@ -16,7 +18,9 @@ public class Product {
     private String productNum; // 编号 唯一
     private String productName; // 名称
     private String cityName; // 出发城市
-    private LocalDateTime departureTime; // 出发时间
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
+    private Date departureTime; // 出发时间
     private String departureTimeStr;
     private double productPrice; // 产品价格
     private String productDesc; // 产品描述

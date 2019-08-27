@@ -5,6 +5,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import wang.ismy.pms.dao.ProductDao;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -21,5 +24,10 @@ public class ProductDaoTest {
     @Test
     public void findAll() {
         assertEquals(3,productDao.findAll().size());
+    }
+
+    @Test
+    public void findById(){
+        assertEquals("a1",productDao.findById("282AE70964BC4CEAB2D1AE637441161A").getProductNum());
     }
 }

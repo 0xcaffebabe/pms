@@ -7,8 +7,8 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="utils" />
-        <module name="domain" />
         <module name="service" />
+        <module name="domain" />
         <module name="web" />
         <module name="dao" />
       </profile>

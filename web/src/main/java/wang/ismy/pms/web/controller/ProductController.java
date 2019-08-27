@@ -34,7 +34,6 @@ public class ProductController {
 
     @RequestMapping("/save")
     public String save(Product product){
-
         productService.save(product);
         return "redirect:/product/list";
     }

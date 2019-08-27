@@ -3,6 +3,6 @@
 <html>
 <body>
 <h2>Hello World!</h2>
-<jsp:forward page="/WEB-INF/pages/main.jsp"/>
+<jsp:forward page="/pages/main.jsp"/>
 </body>
 </html>
