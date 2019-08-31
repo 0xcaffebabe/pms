@@ -1,6 +1,7 @@
 package wang.ismy.pms.web.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import wang.ismy.pms.domain.User;
@@ -37,10 +38,11 @@ public class UserController {
     }
 
     @RequestMapping("/id/{id}")
-    public ModelAndView findById(String id){
+    public ModelAndView findById(@PathVariable("id") String id){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("user-show");
-        modelAndView.addObject("user",userService.findById(id));
+        User user = userService.findById(id);
+        modelAndView.addObject("user",user);
         return modelAndView;
     }
 }

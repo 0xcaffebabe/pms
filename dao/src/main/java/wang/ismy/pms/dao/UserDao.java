@@ -25,6 +25,9 @@ public interface UserDao {
             @Result(column = "phoneNum", property = "phoneNum"), @Result(column =
             "status", property = "status"),
             @Result(column = "id", property = "roles", javaType = List.class, many =
-            @Many(select = "com.itheima.ssm.dao.IRoleDao.findRoleByUserId"))})
+            @Many(select = "wang.ismy.pms.dao.RoleDao.findRoleByUserId"))})
     User findById(String id);
+
+    @Select("SELECT * FROM users WHERE username = #{username}")
+    User findByUsername(String username);
 }

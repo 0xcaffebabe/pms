@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: MY
-  Date: 2019/8/31
-  Time: 11:51
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -150,13 +143,13 @@
                                 </tr>
 
                                 <tbody>
-                                <c:forEach items="${user.roles}" var="role">
-                                    <tr data-tt-id="1" data-tt-parent-id="0">
+                                <c:forEach items="${user.roles}" var="role" varStatus="vs">
+                                    <tr data-tt-id="${vs.index+1}" data-tt-parent-id="0">
                                         <td>${role.roleName }</td>
                                         <td>${role.roleDesc }</td>
                                     </tr>
                                     <c:forEach items="${role.permissions}" var="permission">
-                                        <tr data-tt-id="1-1" data-tt-parent-id="1">
+                                        <tr data-tt-id="1-1" data-tt-parent-id="${vs.index+1}">
                                             <td>${permission.permissionName}</td>
                                             <td>${permission.url}</td>
                                         </tr>
@@ -226,53 +219,53 @@
 
 </div>
 
-<script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
-<script src="../plugins/jQueryUI/jquery-ui.min.js"></script>
+<script src="/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="/plugins/jQueryUI/jquery-ui.min.js"></script>
 <script>
     $.widget.bridge('uibutton', $.ui.button);
 </script>
-<script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
-<script src="../plugins/raphael/raphael-min.js"></script>
-<script src="../plugins/morris/morris.min.js"></script>
-<script src="../plugins/sparkline/jquery.sparkline.min.js"></script>
-<script src="../plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="../plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-<script src="../plugins/knob/jquery.knob.js"></script>
-<script src="../plugins/daterangepicker/moment.min.js"></script>
-<script src="../plugins/daterangepicker/daterangepicker.js"></script>
-<script src="../plugins/daterangepicker/daterangepicker.zh-CN.js"></script>
-<script src="../plugins/datepicker/bootstrap-datepicker.js"></script>
+<script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="/plugins/raphael/raphael-min.js"></script>
+<script src="/plugins/morris/morris.min.js"></script>
+<script src="/plugins/sparkline/jquery.sparkline.min.js"></script>
+<script src="/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+<script src="/plugins/knob/jquery.knob.js"></script>
+<script src="/plugins/daterangepicker/moment.min.js"></script>
+<script src="/plugins/daterangepicker/daterangepicker.js"></script>
+<script src="/plugins/daterangepicker/daterangepicker.zh-CN.js"></script>
+<script src="/plugins/datepicker/bootstrap-datepicker.js"></script>
 <script
-        src="../plugins/datepicker/locales/bootstrap-datepicker.zh-CN.js"></script>
+        src="/plugins/datepicker/locales/bootstrap-datepicker.zh-CN.js"></script>
 <script
-        src="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-<script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<script src="../plugins/fastclick/fastclick.js"></script>
-<script src="../plugins/iCheck/icheck.min.js"></script>
-<script src="../plugins/adminLTE/js/app.min.js"></script>
-<script src="../plugins/treeTable/jquery.treetable.js"></script>
-<script src="../plugins/select2/select2.full.min.js"></script>
-<script src="../plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
+        src="/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+<script src="/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<script src="/plugins/fastclick/fastclick.js"></script>
+<script src="/plugins/iCheck/icheck.min.js"></script>
+<script src="/plugins/adminLTE/js/app.min.js"></script>
+<script src="/plugins/treeTable/jquery.treetable.js"></script>
+<script src="/plugins/select2/select2.full.min.js"></script>
+<script src="/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
 <script
-        src="../plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.zh-CN.js"></script>
-<script src="../plugins/bootstrap-markdown/js/bootstrap-markdown.js"></script>
+        src="/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.zh-CN.js"></script>
+<script src="/plugins/bootstrap-markdown/js/bootstrap-markdown.js"></script>
 <script
-        src="../plugins/bootstrap-markdown/locale/bootstrap-markdown.zh.js"></script>
-<script src="../plugins/bootstrap-markdown/js/markdown.js"></script>
-<script src="../plugins/bootstrap-markdown/js/to-markdown.js"></script>
-<script src="../plugins/ckeditor/ckeditor.js"></script>
-<script src="../plugins/input-mask/jquery.inputmask.js"></script>
-<script src="../plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-<script src="../plugins/input-mask/jquery.inputmask.extensions.js"></script>
-<script src="../plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
-<script src="../plugins/chartjs/Chart.min.js"></script>
-<script src="../plugins/flot/jquery.flot.min.js"></script>
-<script src="../plugins/flot/jquery.flot.resize.min.js"></script>
-<script src="../plugins/flot/jquery.flot.pie.min.js"></script>
-<script src="../plugins/flot/jquery.flot.categories.min.js"></script>
-<script src="../plugins/ionslider/ion.rangeSlider.min.js"></script>
-<script src="../plugins/bootstrap-slider/bootstrap-slider.js"></script>
+        src="/plugins/bootstrap-markdown/locale/bootstrap-markdown.zh.js"></script>
+<script src="/plugins/bootstrap-markdown/js/markdown.js"></script>
+<script src="/plugins/bootstrap-markdown/js/to-markdown.js"></script>
+<script src="/plugins/ckeditor/ckeditor.js"></script>
+<script src="/plugins/input-mask/jquery.inputmask.js"></script>
+<script src="/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="/plugins/input-mask/jquery.inputmask.extensions.js"></script>
+<script src="/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/plugins/datatables/dataTables.bootstrap.min.js"></script>
+<script src="/plugins/chartjs/Chart.min.js"></script>
+<script src="/plugins/flot/jquery.flot.min.js"></script>
+<script src="/plugins/flot/jquery.flot.resize.min.js"></script>
+<script src="/plugins/flot/jquery.flot.pie.min.js"></script>
+<script src="/plugins/flot/jquery.flot.categories.min.js"></script>
+<script src="/plugins/ionslider/ion.rangeSlider.min.js"></script>
+<script src="/plugins/bootstrap-slider/bootstrap-slider.js"></script>
 <script>
     $(document).ready(function() {
         // 选择框
@@ -301,12 +294,12 @@
         // 激活导航位置
         setSidebarActive("admin-datalist");
 
-        // 列表按钮
+        // 列表按钮 
         $("#dataList td input[type='checkbox']").iCheck({
             checkboxClass : 'icheckbox_square-blue',
             increaseArea : '20%'
         });
-        // 全选操作
+        // 全选操作 
         $("#selall").click(function() {
             var clicks = $(this).is(':checked');
             if (!clicks) {
