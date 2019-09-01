@@ -21,12 +21,12 @@
     -->
     <security:http auto-config="true" use-expressions="false">
         <!-- 配置具体的拦截的规则 pattern="请求路径的规则" access="访问系统的人，必须有ROLE_USER的角色" -->
-        <security:intercept-url pattern="/**" access="ROLE_USER,ROLE_ADMIN"/>
+        <security:intercept-url pattern="/**" access="ROLE_ADMIN"/>
 
         <!-- 定义跳转的具体的页面 -->
         <security:form-login
                 login-page="/login.jsp"
-                login-processing-url="/login.do"
+                login-processing-url="/login"
                 default-target-url="/index.jsp"
                 authentication-failure-url="/failer.jsp"
         />
@@ -35,15 +35,17 @@
         <security:csrf disabled="true"/>
 
         <!-- 退出 -->
-        <security:logout invalidate-session="true" logout-url="/logout.do" logout-success-url="/login.jsp" />
+        <security:logout invalidate-session="true" logout-url="/logout" logout-success-url="/login.jsp" />
 
     </security:http>
 
     <!-- 切换成数据库中的用户名和密码 -->
     <security:authentication-manager>
-        <security:authentication-provider ref="userService">
-            <!-- 配置加密的方式 -->
-<!--            <security:password-encoder ref="passwordEncoder"/>-->
+        <security:authentication-provider user-service-ref="userService">
+<!--            <security:user-service id="userDetailsService">-->
+<!--                <security:user name="admin" password="111111" authorities="ROLE_ADMIN" />-->
+<!--                <security:user name="user" password="111111" authorities="ROLE_USER" />-->
+<!--            </security:user-service>-->
         </security:authentication-provider>
     </security:authentication-manager>
 

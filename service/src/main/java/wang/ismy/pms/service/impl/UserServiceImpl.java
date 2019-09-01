@@ -3,14 +3,17 @@ package wang.ismy.pms.service.impl;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import wang.ismy.pms.dao.UserDao;
+import wang.ismy.pms.domain.Role;
 import wang.ismy.pms.domain.User;
 import wang.ismy.pms.service.UserService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,7 +21,7 @@ import java.util.List;
  * @date 2019/8/31 10:57
  */
 @Service("userService")
-public class UserServiceImpl implements UserService, AuthenticationProvider {
+public class UserServiceImpl implements UserService{
 
     private UserDao userDao;
 
@@ -48,19 +51,23 @@ public class UserServiceImpl implements UserService, AuthenticationProvider {
         User user = userDao.findByUsername(s);
 
         org.springframework.security.core.userdetails.User u
-                = new org.springframework.security.core.userdetails.User(user.getUsername(),user.getPassword(),null);
+                = new org.springframework.security.core.userdetails.User(user.getUsername(),"{noop}"+user.getPassword(),user.getStatus() == 1,true,true,true,getAuth(user
+        ));
 
         return u;
     }
 
-    @Override
-    public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        authentication.getAuthorities().
-        return null;
+    private List<SimpleGrantedAuthority> getAuth(User user){
+        List<SimpleGrantedAuthority> list = new ArrayList<>();
+
+        if (user.getRoles() != null){
+            for (Role role : user.getRoles()) {
+                list.add(new SimpleGrantedAuthority("ROLE_"+role.getRoleName()));
+            }
+
+        }
+
+        return list;
     }
 
-    @Override
-    public boolean supports(Class<?> aClass) {
-        return false;
-    }
 }
