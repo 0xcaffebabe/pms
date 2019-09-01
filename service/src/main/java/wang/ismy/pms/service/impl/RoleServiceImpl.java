@@ -2,6 +2,7 @@ package wang.ismy.pms.service.impl;
 
 import org.springframework.stereotype.Service;
 import wang.ismy.pms.dao.RoleDao;
+import wang.ismy.pms.domain.Permission;
 import wang.ismy.pms.domain.Role;
 import wang.ismy.pms.service.RoleService;
 
@@ -28,5 +29,22 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public void save(Role role) {
         roleDao.save(role);
+    }
+
+    @Override
+    public Role findById(String roleId) {
+        return roleDao.findById(roleId);
+    }
+
+    @Override
+    public List<Permission> findOtherPermission(String roleId) {
+        return roleDao.findOtherPermission( roleId);
+    }
+
+    @Override
+    public void addPermission(String role, String[] ids) {
+        for (String id : ids) {
+            roleDao.addPermission(role,id);
+        }
     }
 }

@@ -43,6 +43,6 @@
     -->
     <aop:aspectj-autoproxy proxy-target-class="true"/>
 
-    <bean id="converterService" class="wang.ismy.pms.web.controller.convert.LocalDateTimeConverter"/>
+    <bean id="converterService" class="wang.ismy.pms.web.convert.LocalDateTimeConverter"/>
 
 </beans>

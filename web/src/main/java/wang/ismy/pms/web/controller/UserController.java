@@ -1,9 +1,12 @@
 package wang.ismy.pms.web.controller;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import wang.ismy.pms.domain.Role;
 import wang.ismy.pms.domain.User;
 import wang.ismy.pms.service.UserService;
 
@@ -24,6 +27,7 @@ public class UserController {
     }
 
     @RequestMapping("/list")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ModelAndView list(){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("user-list");
@@ -44,5 +48,25 @@ public class UserController {
         User user = userService.findById(id);
         modelAndView.addObject("user",user);
         return modelAndView;
+    }
+
+    @RequestMapping("/findUserByIdAndAllRole")
+    public ModelAndView findUserByIdAndAllRole(@RequestParam("id") String userId){
+        User user = userService.findById(userId);
+
+        List<Role> otherRole = userService.findOtherRole(userId);
+
+        ModelAndView mv = new ModelAndView();
+
+        mv.addObject("user",user);
+        mv.addObject("roleList",otherRole);
+        mv.setViewName("user-role-add");
+        return mv;
+    }
+
+    @RequestMapping("/addRoleToUser")
+    public String addRole(@RequestParam("userId")String userId,@RequestParam("ids") String[] ids){
+        userService.addRole(userId,ids);
+        return "redirect:list";
     }
 }

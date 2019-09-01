@@ -1,6 +1,7 @@
 package wang.ismy.pms.dao;
 
 import org.apache.ibatis.annotations.*;
+import wang.ismy.pms.domain.Role;
 import wang.ismy.pms.domain.User;
 
 import java.util.List;
@@ -39,4 +40,10 @@ public interface UserDao {
             @Result(column = "id", property = "roles", javaType = List.class, many =
             @Many(select = "wang.ismy.pms.dao.RoleDao.findRoleByUserId")) })
     User findByUsername(String username);
+
+    @Select("SELECT * FROM role WHERE id NOT IN (SELECT roleId FROM users_role WHERE userId = #{user})")
+    List<Role> findOtherRole(String userId);
+
+    @Insert("INSERT INTO users_role(userId,roleId) VALUES(#{user},#{role})")
+    void addRole(@Param("user") String userId,@Param("role") String id);
 }

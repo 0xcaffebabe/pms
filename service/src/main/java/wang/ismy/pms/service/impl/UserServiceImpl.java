@@ -1,8 +1,5 @@
 package wang.ismy.pms.service.impl;
 
-import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -66,8 +63,18 @@ public class UserServiceImpl implements UserService{
             }
 
         }
-
         return list;
     }
 
+    @Override
+    public List<Role> findOtherRole(String userId) {
+        return userDao.findOtherRole(userId);
+    }
+
+    @Override
+    public void addRole(String userId, String[] ids) {
+        for (String id : ids) {
+            userDao.addRole(userId,id);
+        }
+    }
 }

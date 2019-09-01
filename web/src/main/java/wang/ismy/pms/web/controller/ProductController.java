@@ -7,6 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 import wang.ismy.pms.domain.Product;
 import wang.ismy.pms.service.ProductService;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 /**
@@ -24,6 +25,7 @@ public class ProductController {
     }
 
     @RequestMapping("/list")
+    @RolesAllowed("ADMIN")
     public ModelAndView findAll(){
         ModelAndView modelAndView = new ModelAndView();
         List<Product> all = productService.findAll();

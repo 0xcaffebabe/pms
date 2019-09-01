@@ -1,4 +1,4 @@
-package wang.ismy.pms.web.controller.convert;
+package wang.ismy.pms.web.convert;
 
 import org.springframework.core.convert.converter.Converter;
 

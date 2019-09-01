@@ -1,8 +1,11 @@
 package wang.ismy.pms.web.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import wang.ismy.pms.domain.Permission;
 import wang.ismy.pms.domain.Role;
 import wang.ismy.pms.service.RoleService;
 
@@ -36,6 +39,24 @@ public class RoleController {
     @RequestMapping("/save")
     public String save(Role role){
         roleService.save(role);
+        return "redirect:list";
+    }
+
+    @RequestMapping("/id/{id}")
+    public ModelAndView id(@PathVariable("id") String roleId){
+        ModelAndView mv = new ModelAndView();
+
+        Role role = roleService.findById(roleId);
+        List<Permission> permission = roleService.findOtherPermission(roleId);
+        mv.setViewName("role-permission-add");
+        mv.addObject("role",role);
+        mv.addObject("permissionList",permission);
+        return mv;
+    }
+
+    @RequestMapping("/addPermission")
+    public String addPermission(@RequestParam("roleId") String role,@RequestParam("ids") String[] ids){
+        roleService.addPermission(role,ids);
         return "redirect:list";
     }
 }
